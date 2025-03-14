@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+        <link rel="stylesheet" href="style.css">
+        
+        <!-- fix scaling on mobile :D -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>spectraveil</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    </head>
+
+    <body onload="onLoad()"">
+        <div id="mainContent" class="centeredDiv">
+            <div id="tabs">
+                <button id="keystrokesLabel" onclick="selectMenu(0)">Keystrokes</button>
+                <button id="scriptingLabel" onclick="selectMenu(1)">Scripting</button>
+            </div>
+
+            <div id="console">
+                <textarea name="scripting" id="scripting" rows="30" cols="100" contenteditable="plaintext-only" oninput="scriptChange()"></textarea>
+                <div id="buttons">
+                    <button id="runButton">▶ Run</button>
+                    <button id="stopButton">◼ Stop</button>
+                    <!-- <button id="settingsButton">⋮ Settings</button> -->
+                </div>
+
+            </div>
+        </div>
+    </body>
+
+    <!-- add script at the bottom to ensure all elements have been created -->
+    <script src="main.js" type="text/javascript"></script>
+</html>

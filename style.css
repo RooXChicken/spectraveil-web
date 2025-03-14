@@ -1,0 +1,133 @@
+body {
+    background-color: rgb(35, 0, 35);
+
+    color: rgb(216, 210, 210);
+    text-align: center;
+
+    font-family: 'Source Code Pro';
+    font-weight: 700;
+}
+
+.centeredDiv {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+#mainContent {
+    display: flexbox;
+    align-content: left;
+    flex-direction: row;
+}
+
+#tabs {
+    display: flexbox;
+    align-content: last;
+    width: fit-content;
+}
+
+#console {
+    display: flexbox;
+    flex-direction: row;
+    width: fit-content;
+    justify-content: flex-start;
+}
+
+#scripting {
+    background-color: rgb(99, 55, 99);
+    color: #ffffff;
+    font-family: 'Source Code Pro';
+    font-size: 14px;
+
+    border-radius: 8px 8px 8px 8px;
+    border: 2px solid rgb(145, 93, 145);
+    resize: none;
+    outline: none;
+    display: block;
+    max-width: 100%;
+}
+
+#scripting:focus {
+    border: 2px solid rgb(221, 89, 221);
+}
+
+#buttons {
+    justify-content: center;
+    background-color: #ce0aff54;
+    border-radius: 6px 6px 6px 6px;
+    padding: 5px;
+    margin: 2px;
+    width: fit-content;
+    margin: auto;
+}
+
+button {
+    background-color: #66336F;
+    border-radius: 8px 8px 8px 8px;
+    border: 2px solid #2E1E33;
+    color: white;
+    padding: 4px 8px;
+    min-width: 64px;
+    text-align: center;
+    
+
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #864791;
+}
+
+#runButton {
+    background-color: #336f42;
+    border-color: #21552e;
+}
+
+
+#stopButton {
+    background-color: #6f3333;
+    border-color: #552121;
+}
+
+#runButton:hover {
+    background-color: #4ea063;
+}
+
+
+#stopButton:hover {
+    background-color: #ac5858;
+}
+
+#settingsButton {
+    background-color: #533f53;
+    border-color: #a783a4;
+}
+
+#settingsButton:hover {
+    background-color: #7e537e;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: #9a65a3;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 8px;
+}
+
+large {
+    font-size: 32px;
+}
+
+medium {
+    font-size: 24px;
+
+}
+
+small {
+    font-size: 20px;
+}
