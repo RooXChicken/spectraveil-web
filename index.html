@@ -11,19 +11,35 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     </head>
 
-    <body onload="onLoad()"">
+    <body onload="onLoad()">
         <div id="mainContent" class="centeredDiv">
             <div id="tabs">
                 <button id="keystrokesLabel" onclick="selectMenu(0)">Keystrokes</button>
                 <button id="scriptingLabel" onclick="selectMenu(1)">Scripting</button>
             </div>
 
+            <div id="fileMenu" class="dropdownMenu">
+                <button onclick="openFile()">Open Script</button>
+                <button onclick="storeScript()">Save</button>
+                <button>Save As</button>
+            </div>
+
+            <div id="editMenu" class="dropdownMenu">
+                <button>Undo</button>
+                <button>Copy</button>
+                <button>Paste</button>
+            </div>
+
             <div id="console">
+                <div id="menuBar">
+                    <button onclick="toggleDropdown(0)">File</button>
+                    <button onclick="toggleDropdown(1)">Edit</button>
+                </div>
                 <textarea name="scripting" id="scripting" rows="30" cols="100" contenteditable="plaintext-only" oninput="scriptChange()"></textarea>
                 <div id="buttons">
                     <button id="runButton">▶ Run</button>
                     <button id="stopButton">◼ Stop</button>
-                    <!-- <button id="settingsButton">⋮ Settings</button> -->
+                    <button id="settingsButton">⋮ Settings</button>
                 </div>
 
             </div>
