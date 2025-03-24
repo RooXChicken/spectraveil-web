@@ -22,9 +22,18 @@ function onLoad() {
     selectMenu(0);
 
     onkeydown = (_event) => {
+        if(_event.ctrlKey && _event.key == "o") {
+            _event.preventDefault();
+            openFile();
+        }
+
         if(_event.ctrlKey && _event.key == "s") {
             _event.preventDefault();
             storeScript();
+
+            if(_event.shiftKey) {
+                saveFile();
+            }
         }
     };
 
@@ -125,7 +134,7 @@ function toggleDropdown(_index) {
     }
 }
 
-async function openFile() {
+function openFile() {
     let _picker = document.createElement('input');
     _picker.type = 'file';
     
@@ -135,6 +144,7 @@ async function openFile() {
         
         _reader.onload = (_event) => {
             script = _event.target.result;
+            scriptingInput.
             selectMenu(1);
             scriptChange();
         }
@@ -142,4 +152,21 @@ async function openFile() {
     };
     
     _picker.click();
+}
+
+function saveFile(_name) {
+    storeScript();
+    let _blob = new Blob([script], { type: 'text/plain' });
+    let _url = window.URL.createObjectURL(_blob);
+
+    let _link = document.createElement('a');
+    _link.style.setProperty('display', 'none');
+    document.body.appendChild(_link);
+
+    _link.href = _url;
+    _link.download = _name;
+    _link.click();
+
+    window.URL.revokeObjectURL(_url);
+    _link.remove();
 }
