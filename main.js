@@ -16,6 +16,8 @@ var keystrokes = "WASD{SPACE}THESE{SPACE}ARE{SPACE}KEYSTROKES";
 var script = loadScript();
 var unsaved = false;
 
+var picoIP = "http://10.0.0.38";
+
 var selectedMenu = 0;
 
 function onLoad() {
@@ -169,4 +171,21 @@ function saveFile(_name) {
 
     window.URL.revokeObjectURL(_url);
     _link.remove();
+}
+
+async function runScript() {
+    let _str = scriptingInput.value;
+    _str = _str.replaceAll("\n", "%nl").replaceAll("\"", "%22").replaceAll("\'", "%21").replaceAll(" ", "%20");
+    
+    // split script into chunks so it can bypass the ~2000 character URL limit
+    for(let i = 0; i < _str.length / 1512; i++) {
+        let _splitString = _str.substring(i*1512, Math.min(_str.length, (i+1)*1512));
+        await fetch(picoIP + "/send_str?str=" + _splitString);
+    }
+
+    await fetch(picoIP + "/send_str?fin=true");
+}
+
+function openSettings() {
+
 }

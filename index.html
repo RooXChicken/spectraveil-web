@@ -37,9 +37,9 @@
                 </div>
                 <textarea name="scripting" id="scripting" rows="30" cols="100" contenteditable="plaintext-only" oninput="scriptChange()"></textarea>
                 <div id="buttons">
-                    <button id="runButton">▶ Run</button>
-                    <button id="stopButton">◼ Stop</button>
-                    <button id="settingsButton">⋮ Settings</button>
+                    <button onclick="runScript()" id="runButton">▶ Run</button>
+                    <button onclick="stopScript()" id="stopButton">◼ Stop</button>
+                    <button onclick="openSettings()" id="settingsButton">⋮ Settings</button>
                 </div>
 
             </div>
