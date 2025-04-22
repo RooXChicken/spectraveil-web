@@ -16,7 +16,7 @@ var keystrokes = "WASD{SPACE}THESE{SPACE}ARE{SPACE}KEYSTROKES";
 var script = loadScript();
 var unsaved = false;
 
-var picoIP = "http://10.0.0.38";
+var picoIP = "http://192.168.0.216";
 
 var selectedMenu = 0;
 
@@ -175,15 +175,28 @@ function saveFile(_name) {
 
 async function runScript() {
     let _str = scriptingInput.value;
-    _str = _str.replaceAll("\n", "%nl").replaceAll("\"", "%22").replaceAll("\'", "%21").replaceAll(" ", "%20");
+
+    // create special keys
+    _str = _str.replaceAll("\\n", "%kn").replaceAll("\"", "%km").replaceAll("\'", "%ka").replaceAll(" ", "%ks").replaceAll("/", "%kf").replaceAll(":", "%kc").replaceAll("&", "%kp").replaceAll("?", "%kq")
+        .replaceAll("{ctrl}", "%cc0").replaceAll("{ctrl_d}", "%cc1").replaceAll("{ctrl_u}", "%cc2")
+        .replaceAll("{win}", "%cw0").replaceAll("{win_d}", "%cw1").replaceAll("{win_u}", "%cw2")
+        .replaceAll("{alt}", "%ca0").replaceAll("{alt_d}", "%ca1").replaceAll("{alt_u}", "%ca2")
+        .replaceAll("{shift}", "%cs0").replaceAll("{shift_d}", "%cs1").replaceAll("{shift_u}", "%cs2")
+        .replaceAll("{del}", "%cd0").replaceAll("{back}", "%cb0").replaceAll("{tab}", "%ct0").replaceAll("{sleep_", "%s");
     
     // split script into chunks so it can bypass the ~2000 character URL limit
     for(let i = 0; i < _str.length / 1512; i++) {
         let _splitString = _str.substring(i*1512, Math.min(_str.length, (i+1)*1512));
-        await fetch(picoIP + "/send_str?str=" + _splitString);
+        try {
+            await fetch(picoIP + "/send_str?str=" + _splitString);
+        }
+        catch(_e) {}
     }
 
-    await fetch(picoIP + "/send_str?fin=true");
+    try {
+        await fetch(picoIP + "/send_str?fin=true");
+    }
+    catch(_e) {}
 }
 
 function openSettings() {
